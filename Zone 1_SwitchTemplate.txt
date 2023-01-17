@@ -1,0 +1,70 @@
+!
+hostname <!>hostname<!>
+!Specify the voice and data Vlan which will be using DHCP
+ip dhcp snooping vlan <!>dhcpvlans<!>
+no ip dhcp snooping information option
+ip dhcp snooping
+!
+no ip dhcp snooping information option
+ip domain-name generic.domain
+ip name-server 8.8.8.8 1.1.1.1
+ip domain lookup source-interface <!>sourcevlan<!>
+vtp domain <!>hostname<!>							   
+vtp mode off
+ip default-gateway <!>gateway<!>
+!
+!
+username admin privilege 15 secret $3c43t
+!
+!
+redundancy
+ mode sso
+!
+!
+crypto key generate rsa general-keys modulus 2048
+!
+
+<!>createvlans<!>
+!
+<!>portstart<!>
+!
+!------------configure vlans here--------------------
+!
+interface Vlan <!>mgmtvlan<!>
+ ip address <!>ipaddress<!> <!>subnet<!>
+!
+logging source-interface <!>sourcevlan<!>
+banner login ^C
+-----------------------------------------------------------------------------
+** WARNING **  ** WARNING **  ** WARNING **  ** WARNING **  ** WARNING **
+-----------------------------------------------------------------------------
+
+        GENERIC BANNER - <!>zone<!>
+        ==========================================
+
+Only persons authorized can do this!
+
+-----------------------------------------------------------------------------
+** WARNING **  ** WARNING **  ** WARNING **  ** WARNING **  ** WARNING **
+-----------------------------------------------------------------------------
+^C
+banner motd ^C
+<<<<<<<<<<<<<<<<<<<<<<<<< Site Information >>>>>>>>>>>>>>>>>>>>>>>>>
+
+Device Name: <!>hostname<!>
+Building Name: <!>building<!>
+Street Address: <!>address<!>
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+^C
+!
+line con 0
+ exec-timeout 5 0
+line vty 0 4
+ exec-timeout 10 0
+ transport input ssh
+line vty 5 15
+ exec-timeout 60 0
+ transport input ssh
+!
+end

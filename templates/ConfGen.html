@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="static/dependencies/bootstrap-4.4.1-dist/css/bootstrap.min.css">
+    <script type="text/javascript" src="static/dependencies/jquery-3.5.0.min.js"></script>
+    <script type="text/javascript" src="static/dependencies/jsscript.js"></script>
+    <meta charset="UTF-8">
+    <title>ConfGen</title>
+</head>
+<body>
+<div class="container">
+    <h1>Switch Configuration Generator</h1>
+    <form action="{{ url_for('generate') }}" method="post">
+                    <label for="Hostname">Hostname: &nbsp</label><input type="text" id="Hostname" name="Hostname"><br><br>
+                    <label for="Building">Building: &nbsp</label><input type="text" id="Building" name="Building"><br><br>
+                    <label for="Address"> Address: &nbsp</label><input type="text" id="Address" name="Address"><br><br>
+                    <label for="SwitchIP"> Switch Management IP Address: &nbsp</label><input type="text" id="SwitchIP" name="SwitchIP"><br><br>
+                    <label for="StackCount">Number of Switches in Stack: &nbsp</label><input type="number" id="StackCount" name="StackCount" MIN="1" MAX="8" STEP="1" VALUE="4"><br><br>
+                        <label for="SwitchSub">Switch Management Subnet: &nbsp</label><input type="text" id="SwitchSub" name="SwitchSub"><br><br>
+                        <label for="SwitchGateway"> Switch Gateway: &nbsp</label><input type="text" id="SwitchGateway" name="SwitchGateway"><br><br>
+                        <label for="PortCount"># Of Ports Per Switch: &nbsp</label><input value="48" MIN="1" id="PortCount" max="48" name="PortCount" step="1" type="number"><br><br>
+                        <label for="PortType">Port Type: </label>
+                        <select id="PortType" name="PortType">
+                            <option value="FastEthernet">FastEthernet</option>
+                            <option value="GigabitEthernet" selected>GigabitEthernet</option>
+                            <option value="TenGigabitEthernet">TenGigabitEthernet</option>
+                        </select><br><br>
+                        <label for="Zone">Zone: </label>
+                        <select id="Zone" name="Zone">
+                            <option value="Zone 1">Zone 1</option>
+                            <option value="Zone 2">Zone 2</option>
+                            <option value="Zone 3">Zone 3</option>
+                                    </select><br><br>
+            <div class="row">
+                <div class="col-3">
+                    <table class="table">
+                        <tr>
+                            <td><label for="AVNum">Access Vlan Number: </label><input type="text" id="AVNum" name="AVlanNum"></td>
+                            <td><label for="AVName">Access Vlan Name: </label><input type="text" id="AVName" name="AVlanName"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="VVNum">Voice Vlan Number: </label><input type="text" id="VVNum" name="VVlanNum"></td>
+                            <td><label for="VVName">Voice Vlan Name: </label><input type="text" id="VVName" name="VVlanName"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="MVNum">MGMT VLAN Number: </label><input type="text" id="MVNum" name="MVlanNum"></td>
+                            <td><label for="MVName">MGMT VLAN Name: </label><input type="text" id="MVName" name="MVlanName"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="field_wrapper">
+                <div>
+                    <p name="AddVLAN">Add Additional VLANS &nbsp&nbsp&nbsp <a href="javascript:void(0);" class="add_button" title="Add field"><img width="16" height="16" src="static/images/add.png"/></a></p>
+                </div>
+             </div>
+    <button type="submit" name="action" class="btn btn-primary" value="Submit">Submit</button>
+    </form>
+
+</div>
+</body>
+</html>
+

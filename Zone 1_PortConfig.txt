@@ -1,0 +1,9 @@
+interface <!>interface<!>
+switchport access vlan <!>AccessVlan<!>
+switchport mode access
+switchport voice vlan <!>VoiceVlan<!>
+no vtp
+spanning-tree portfast
+spanning-tree bpduguard enable
+spanning-tree guard loop
+!
